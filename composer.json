@@ -1,0 +1,12 @@
+{
+  "name": "zalsamach/sdev328/dating",
+  "authors": [
+    {
+      "name": "Zahrah Al-samach",
+      "email": "zal-samach@mail.greenriver.edu"
+    }
+  ],
+  "require": {
+    "bcosca/fatfree-core": "dev-master"
+  }
+}

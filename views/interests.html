@@ -26,7 +26,11 @@
         <div class="form-group">
             <h5>Indoor Interests</h5>
             <div class="d-inline">
-                <input type="checkbox" id="tv" name="interests[]" value="tv">
+                <repeat group="{{ @indoor }}" value="{{ @indoorItem }}">
+                    <input class="m-2" type="checkbox" id="{{ @indoorItem }}" name="interests[]" value="{{ @indoorItem }}">
+                    <label for="{{ @indoorItem }}">{{ ucfirst(@indoorItem) }}</label>
+                </repeat>
+                <!--<input type="checkbox" id="tv" name="interests[]" value="tv">
                 <label for="tv">tv</label>
                 <input type="checkbox" id="movies" name="interests[]" value="movies">
                 <label for="movies">movies</label>
@@ -41,11 +45,15 @@
                 <input type="checkbox" id="playing cards" name="interests[]" value="playing cards">
                 <label for="playing cards">playing cards</label>
                 <input type="checkbox" id="video games" name="interests[]" value="video games">
-                <label for="video games">video games</label>
+                <label for="video games">video games</label>-->
             </div>
             <h5>Outdoor Interests</h5>
             <div class="d-inline">
-                <input type="checkbox" id="hiking" name="interests[]" value="hiking">
+                <repeat group="{{ @outdoor }}" value="{{ @outdoorItem }}">
+                    <input class="m-2" type="checkbox" id="{{ @outdoorItem }}" name="interests[]" value="{{ @outdoorItem }}">
+                    <label for="{{ @outdoorItem }}">{{ ucfirst(@outdoorItem) }}</label>
+                </repeat>
+                <!--<input type="checkbox" id="hiking" name="interests[]" value="hiking">
                 <label for="hiking">hiking</label>
                 <input type="checkbox" id="biking" name="interests[]" value="biking">
                 <label for="biking">biking</label>
@@ -56,7 +64,7 @@
                 <input type="checkbox" id="walking" name="interests[]" value="walking">
                 <label for="walking">walking</label>
                 <input type="checkbox" id="climbing" name="interests[]" value="climbing">
-                <label for="climbing">climbing</label>
+                <label for="climbing">climbing</label>-->
             </div>
 
             <div class="col-xs-3 ">

@@ -21,7 +21,7 @@ class Validator
     //Up to me what a valid phone number is
     static function validNumber($number)
     {
-        return ctype_alpha($number);
+        return is_numeric($number);
     }
 
     //Validates email
@@ -31,12 +31,12 @@ class Validator
             ? FALSE : TRUE;
     }
 
-    static function validOutdoor($name)
+    static function validOutdoor()
     {
         return false;
     }
 
-    static function validIndoor($name)
+    static function validIndoor()
     {
         return false;
     }

@@ -14,7 +14,6 @@
         <a class="nav-item nav-link" href="home">My Dating Website</a>
     </div>
 </nav>
-
     <form action="#" method="post" class="form-horizontal">
         <div class="border rounded border-light bg-light col-lg-8 col-md-10 col-sm-12 m-auto text-eli" id="main">
             <div class="container text-eli">
@@ -22,16 +21,22 @@
                     <div id="left" class="col-8 border">
                         <h1 class="m-auto">Personal Information</h1>
                         <hr>
-                        <form class="row" action="#" method="post">
                             <label><b>First Name</b></label>
                             <input class="form-control m-2" name="fname" id="fname" type="text">
-
+                            <p><check if="{{ isset(@SESSION.errFname) }}">
+                                <span class="err">{{ @SESSION.errFname }}</span>
+                            </check></p>
                             <label><b>Last Name</b></label>
                             <input class="form-control m-2" name="lname" id="lname" type="text">
-
+                            <p><check if="{{ isset(@SESSION.errLname) }}">
+                                <span class="err">{{ @SESSION.errLname }}</span>
+                            </check></p>
 
                             <label for="age"><b>Age</b></label>
                             <input class="form-control m-2" name="age" id="age" type="text">
+                            <p><check if="{{ isset(@SESSION.errAge) }}">
+                                <span class="err">{{ @SESSION.errAge }}</span>
+                            </check></p>
 
                             <label><b>Gender</b></label>
                             <div class="d-inline">
@@ -43,13 +48,14 @@
 
                             <h5><b>Phone Number</b></h5>
                             <input class="form-control m-2" name="number" id="number" type="text">
+                            <p><check if="{{ isset(@SESSION.errNumber) }}">
+                                <span class="err">{{ @SESSION.errNumber }}</span>
+                            </check></p>
 
                             <div class="m-2">
                                 <input class="w-25 form-control btn btn-primary"
                                        type="submit" value="Next">
                             </div>
-                        </form>
-
                     </div>
 
                     <!-- Note -->

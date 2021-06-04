@@ -26,8 +26,14 @@ class DatingController
             //Valid rating initially true
             $this->_f3->set('validPersonalInfo', true);
 
+            if ($_POST['pmember'] == "Member") {
+                $_SESSION['member'] = new PremiumMember();
+            }
+            else {
+                $_SESSION['member'] = new Member();
+            }
 
-            $_SESSION['fname'] = $_POST['fname'];
+            $_SESSION['member']->setFname($_POST['fname']);
             if (!Validator::validName($_POST['fname']))
             {
                 //$this->_f3->set('errors["fname"]', 'Invalid first name');
@@ -42,7 +48,7 @@ class DatingController
                 $_SESSION['errFname'] = false;
             }
 
-            $_SESSION['lname'] = $_POST['lname'];
+            $_SESSION['member']->setLname($_POST['lname']);
             if (!Validator::validName($_POST['lname']))
             {
                 $_SESSION['errLname'] = 'Invalid last name';
@@ -54,7 +60,7 @@ class DatingController
                 $_SESSION['errLname'] = false;
             }
 
-            $_SESSION['age'] = $_POST['age'];
+            $_SESSION['member']->setAge($_POST['age']);
             if (!Validator::validAge($_POST['age']))
             {
                 $_SESSION['errAge'] = 'Invalid age';
@@ -66,9 +72,9 @@ class DatingController
                 $_SESSION['errAge'] = false;
             }
 
-            $_SESSION['gender'] = $_POST['gender'];
+            $_SESSION['member']->setGender($_POST['gender']);
 
-            $_SESSION['number'] = $_POST['number'];
+            $_SESSION['member']->setNumber($_POST['number']);
             if (!Validator::validNumber($_POST['number']))
             {
                 $_SESSION['errNumber'] = 'Invalid phone number';
@@ -99,13 +105,14 @@ class DatingController
 
     function profile()
     {
+        //var_dump(get_class($_SESSION['member']));
         //If the form has been submitted, add the data to session
         //and send the user to the next order form
         if ($_SERVER['REQUEST_METHOD']  == 'POST') {
 
             $this->_f3->set('validProfile', true);
 
-            $_SESSION['email'] = $_POST['email'];
+            $_SESSION['member']->setEmail($_POST['email']);
             if (!Validator::validEmail($_SESSION['email']))
             {
                 $_SESSION['errEmail'] = 'Invalid Email';
@@ -117,12 +124,19 @@ class DatingController
                 $_SESSION['errEmail'] = false;
             }
 
-            $_SESSION['state'] = $_POST['state'];
-            $_SESSION['seeking'] = $_POST['seeking'];
-            $_SESSION['bio'] = $_POST['bio'];
+            $_SESSION['member']->setState($_POST['state']);
+            $_SESSION['member']->setSeeking($_POST['seeking']);
+            $_SESSION['member']->setBio($_POST['bio']);
             if ($this->_f3->get('validProfile') == true)
             {
-                header('location: interests');
+                if (get_class($_SESSION['member']) == "PremiumMember")
+                {
+                    header('location: interests');
+                }
+                else {
+                    header('location: summary');
+                }
+
             }
             else
             {

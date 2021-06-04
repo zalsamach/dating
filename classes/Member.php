@@ -41,7 +41,7 @@ class Member
     /**
      * @param string $fname
      */
-    public function setFname(string $fname): void
+    public function setFname(string $fname)
     {
         $this->_fname = $fname;
     }

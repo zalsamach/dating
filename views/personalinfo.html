@@ -46,11 +46,19 @@
                                 <label for="female">Female</label>
                             </div>
 
-                            <h5><b>Phone Number</b></h5>
-                            <input class="form-control m-2" name="number" id="number" type="text">
-                            <p><check if="{{ isset(@SESSION.errNumber) }}">
-                                <span class="err">{{ @SESSION.errNumber }}</span>
-                            </check></p>
+                            <h6><b>Phone Number</b></h6>
+                                <input class="form-control m-2" name="number" id="number" type="text">
+                                <p><check if="{{ isset(@SESSION.errNumber) }}">
+                                    <span class="err">{{ @SESSION.errNumber }}</span>
+                                </check></p>
+
+
+                            <div>
+                                <h6><b>Premium Membership</b></h6>
+                                <input type="checkbox" id="pmember" name="pmember" value="Member">
+                                <label for="pmember">Sign me up for a Premium Account!</label><br>
+                            </div>
+
 
                             <div class="m-2">
                                 <input class="w-25 form-control btn btn-primary"

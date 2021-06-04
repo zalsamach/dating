@@ -6,16 +6,16 @@
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
-//Start a session
-session_start();
-
 //Require autoload file
 require_once ('vendor/autoload.php');
 
-//Instantiate Fat-free
-$f3 = Base :: instance();
-$con = new DatingController($f3);
+//Start a session
+session_start();
 
+//Instantiate Fat-free
+$f3 = Base::instance();
+$con = new DatingController($f3);
+//var_dump($con);
 //Define routes
 $f3->route('GET /', function (){
 
@@ -27,7 +27,7 @@ $f3->route('GET /home', function (){
     $GLOBALS['con']->home();
 });
 
-$f3->route('GET|POST /personalinfo', function($f3){
+$f3->route('GET|POST /personalinfo', function(){
 
     $GLOBALS['con']->personalinfo();
 });

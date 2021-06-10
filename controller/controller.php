@@ -112,8 +112,7 @@ class DatingController
 
             $this->_f3->set('validProfile', true);
 
-            $_SESSION['member']->setEmail($_POST['email']);
-            if (!Validator::validEmail($_SESSION['email']))
+            if (!Validator::validEmail($_POST['email']))
             {
                 $_SESSION['errEmail'] = 'Invalid Email';
                 $this->_f3->set('validProfile', false);
@@ -121,7 +120,7 @@ class DatingController
             }
             else
             {
-                $_SESSION['errEmail'] = false;
+                $_SESSION['member']->setEmail($_POST['email']);
             }
 
             $_SESSION['member']->setState($_POST['state']);

@@ -27,8 +27,10 @@ class Validator
     //Validates email
     static function validEmail($email)
     {
-        return (!preg_match("/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix", $email))
-            ? FALSE : TRUE;
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            return false;
+        }
+        return true;
     }
 
     static function validOutdoor()

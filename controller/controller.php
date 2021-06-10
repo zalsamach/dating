@@ -60,7 +60,8 @@ class DatingController
                 $_SESSION['errLname'] = false;
             }
 
-            $_SESSION['member']->setAge($_POST['age']);
+
+
             if (!Validator::validAge($_POST['age']))
             {
                 $_SESSION['errAge'] = 'Invalid age';
@@ -69,10 +70,10 @@ class DatingController
             }
             else
             {
-                $_SESSION['errAge'] = false;
+                $_SESSION['member']->setAge($_POST['age']);
             }
 
-            $_SESSION['member']->setGender($_POST['gender']);
+            //$_SESSION['member']->setGender($_POST['gender']);
 
             $_SESSION['member']->setNumber($_POST['number']);
             if (!Validator::validNumber($_POST['number']))
@@ -112,6 +113,7 @@ class DatingController
 
             $this->_f3->set('validProfile', true);
 
+            $_SESSION['member']->setEmail($_POST['email']);
             if (!Validator::validEmail($_POST['email']))
             {
                 $_SESSION['errEmail'] = 'Invalid Email';
@@ -120,11 +122,11 @@ class DatingController
             }
             else
             {
-                $_SESSION['member']->setEmail($_POST['email']);
+                $_SESSION['errEmail'] = false;
             }
 
             $_SESSION['member']->setState($_POST['state']);
-            $_SESSION['member']->setSeeking($_POST['seeking']);
+            //$_SESSION['member']->setSeeking($_POST['seeking']);
             $_SESSION['member']->setBio($_POST['bio']);
             if ($this->_f3->get('validProfile') == true)
             {
@@ -154,7 +156,7 @@ class DatingController
         //If the form has been submitted, add the data to session
         //and send the user to the next order form
         if ($_SERVER['REQUEST_METHOD']  == 'POST') {
-            var_dump($_POST);
+            //var_dump($_POST);
             $_SESSION['interests'] = $_POST['interests'];
 
             if (!Validator::validIndoor($_SESSION['interests']) == false)
